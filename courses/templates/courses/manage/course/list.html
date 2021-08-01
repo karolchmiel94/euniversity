@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}My courses{% endblock %}
+
+{% block content %}
+    <h1 class="py-3">My courses</h1>
+    <div class="container">
+        <div class="row">
+            {% for course in object_list %}
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                    <h4 class="card-title">{{ course.title }}</h4>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url "course_edit" course.id %}" class="btn btn-secondary m-auto">Edit</a>
+                        <a href="{% url "course_delete" course.id %}" class="btn btn-danger m-auto">Delete</a>
+                        <a href="{% url "course_module_update" course.id %}" type="submit" class="btn btn-primary">Edit modules</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <p>You haven't created any courses yet.</p>
+            {% endfor %}
+            <div class="py-3">
+                <a href="{% url "course_create" %}" class="btn btn-block btn-primary">Create new course</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

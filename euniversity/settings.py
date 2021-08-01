@@ -78,9 +78,13 @@ WSGI_APPLICATION = 'euniversity.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "euniversity",
+        "USER": "admin",
+        "PASSWORD": env("PASSWORD"),
+        "HOST": "localhost",
+        "PORT": 5432,
     }
 }
 
@@ -103,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (('django.contrib.auth.backends.ModelBackend'),)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

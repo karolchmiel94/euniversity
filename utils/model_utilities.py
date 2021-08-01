@@ -3,6 +3,7 @@ import random
 
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.db.models.signals import pre_save
 
 
 class TimeStampMixin(models.Model):
