@@ -29,6 +29,7 @@ class Course(TimeStampMixin):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     overview = models.TextField()
+    students = models.ManyToManyField(User, related_name='courses_joined', blank=True)
 
     class Meta:
         ordering = ['-created_at']
